@@ -1,27 +1,28 @@
-// index.js
-const express = require('express');          // load the server tool
-const app = express();                       // make a server
-const PORT = 3000;                           // choose a door number
+// index.js (simple version)
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-// When someone visits http://localhost:3000/hello
+// GET /hello -> plain text
 app.get('/hello', (req, res) => {
   res.send('👋 Hi! Your mini-server is working.');
 });
 
-// When someone visits http://localhost:3000/plan
+// GET /plan -> JSON (a tiny plan)
 app.get('/plan', (req, res) => {
   res.json({
-    today: "Rebuild a mini server",
+    today: "Week 2 Review",
     steps: [
       "mkdir mini-server",
       "npm init -y",
-      "npm install express",
-      "make /hello and /plan routes"
+      "npm install express openai dotenv",
+      "add /hello and /plan routes",
+      "git push"
     ]
   });
 });
 
-// Turn the server on
+// turn server on
 app.listen(PORT, () => {
   console.log(`Mini server running at http://localhost:${PORT}`);
 });
